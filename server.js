@@ -16,6 +16,13 @@ app.use(cors({origin: '*'})); //For FCC testing purposes only
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
+// report all requests to console
+app.use("/", (req, res, next) => {
+  console.log(`\n${req.method} ${req.path} - ${req.ip}`);
+  console.log(req.body);
+  next();
+});
+
 // Index page (static HTML)
 app.route('/')
   .get(function (req, res) {
