@@ -101,6 +101,11 @@ class Translator {
     if (capitalized) {
       result = result.charAt(0).toUpperCase() + result.slice(1);
     }
+    // check if no translation was needed
+    // if so, return special message
+    if (result == text) {
+      result = "Everything looks good to me!";
+    }
     // all done
     return {
       text: text,
