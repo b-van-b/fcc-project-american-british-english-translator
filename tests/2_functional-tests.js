@@ -86,7 +86,7 @@ suite("Functional Tests", () => {
   test("Translation with empty text: POST request to /api/translate", (done) => {
     const text = "";
     const locale = "british-to-american";
-    const error = { error: "Required field(s) missing" };
+    const error = { error: "No text to translate" };
     chai
       .request(server)
       .post("/api/translate")
