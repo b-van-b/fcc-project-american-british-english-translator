@@ -78,8 +78,17 @@ function capitalize(obj) {
 class Translator {
   translate(text, locale) {
     // reject missing fields
-    if (!(text && locale && text.trim())) {
+    if (
+      typeof text == "undefined" ||
+      typeof locale == "undefined" ||
+      text == null ||
+      locale == null
+    ) {
       return { error: "Required field(s) missing" };
+    }
+    // reject empty text
+    if (text.trim() == "") {
+      return { error: "No text to translate" };
     }
     // reject unknown locales
     if (!dictionary.hasOwnProperty(locale)) {
