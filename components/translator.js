@@ -77,9 +77,13 @@ function capitalize(obj) {
 
 class Translator {
   translate(text, locale) {
+    // reject missing fields
+    if (!(text && locale && text.trim())) {
+      return { error: "Required field(s) missing" };
+    }
     // reject unknown locales
     if (!dictionary.hasOwnProperty(locale)) {
-      return { error: "Unknown locale" };
+      return { error: "Invalid value for locale field" };
     }
     // otherwise, translate
     let wordPairs;
